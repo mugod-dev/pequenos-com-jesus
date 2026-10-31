@@ -1,15 +1,14 @@
 # Pequenos com Jesus
 
-Landing page do kit digital **Pequenos com Jesus**: mais de 400 atividades bíblicas para colorir, recortar e brincar.
+Página de vendas do kit **Pequenos com Jesus**: 20 livros de colorir com histórias da Bíblia, no estilo fofinho do Bobbie Goods, somando 695 páginas em PDF.
 
-A página é um único arquivo (`index.html`), sem build e sem dependências. As fontes vêm do Google Fonts e as ilustrações são SVG feitas à mão dentro do próprio HTML.
+A página é um único `index.html` com as imagens na pasta `assets/`. Não precisa de build nem de dependências; as fontes vêm do Google Fonts.
 
 ## Destaques
 
-- Arca de Noé interativa para colorir no topo, com paleta de cores, botão "Mágica" e "Apagar"
-- Galeria de páginas que se pintam sozinhas ao aparecer na tela
-- Ovelhinha que pula e fala ao ser tocada, contador animado e confete nos botões de compra
-- Modo claro e escuro automático, layout responsivo e suporte a "reduzir movimento"
+- Pilha com as capas reais, que se embaralha sozinha ou ao tocar
+- "Pinte uma página de verdade": a criança pinta com o dedo ou o mouse por cima de uma página do kit
+- Confete nos botões de compra, modo claro e escuro, layout responsivo e suporte a "reduzir movimento"
 
 ## Como ver
 
@@ -17,6 +16,6 @@ Abra o `index.html` no navegador. Para publicar de graça, ative o **GitHub Page
 
 ## Antes de colocar no ar
 
-- [ ] Trocar o `href` do botão **"Quero garantir meu kit"** (procure `id="buy"` no `index.html`) pelo link do checkout
+- [ ] Trocar o `href` do botão **"Quero os 20 livros"** (procure `id="buy"` no `index.html`) pelo link do checkout
 - [ ] Substituir os depoimentos de exemplo pelos prints reais dos clientes
-- [ ] Revisar os textos do FAQ e a lista de itens do kit
+- [ ] Conferir os nomes que dei aos livros sem título (lista `BOOKS` no fim do `index.html`): "Momentos com Jesus" (livro 4), "Palavras de Fé" (livro 1), "Criação do Mundo Kids" (01) e "Jesus e Amigos na Páscoa" (06)
