@@ -2,7 +2,7 @@
 
 Página de vendas do kit **Pequenos com Jesus**: 20 livros de colorir com histórias da Bíblia, no estilo fofinho do Bobbie Goods, somando 695 páginas em PDF.
 
-A página é um único `index.html` com as imagens na pasta `assets/`. Não precisa de build nem de dependências; as fontes vêm do Google Fonts.
+A página é um único `index.html`, com as imagens embutidas no próprio arquivo. Não precisa de build, de pasta de imagens nem de dependências; as fontes vêm do Google Fonts.
 
 ## Destaques
 
