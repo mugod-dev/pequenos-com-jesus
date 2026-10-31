@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mais de 400 atividades bíblicas para colorir, recortar e brincar.">
+<title>Pequenos com Jesus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Grandstander:wght@600;800;900&family=Nunito:wght@500;700;800&display=swap">
+<style>
+/* Layout: um livro de colorir que ganha vida — adesivos com contorno de tinta, sombras "de desenho", faixas coloridas separadas por ondas */
+:root {
+  --paper: #EAF6FF;
+  --surface: #FFFFFF;
+  --band: #FFF0C2;
+  --ink: #1B1F5E;
+  --ink-soft: #4B5190;
+  --stroke: #1B1F5E;
+  --line: rgba(27, 31, 94, .14);
+  --dot: rgba(46, 184, 240, .22);
+  --night: #1B1F5E;
+  --night-deep: #12164A;
+  --on-night: #FFFFFF;
+  --sheet: #FFFFFF;
+  --sheet-ink: #1B1F5E;
+  --on-color: #1B1F5E;
+
+  --sun: #FFC83D;
+  --coral: #FF5C6C;
+  --sky: #2EB8F0;
+  --grass: #22B36A;
+  --grape: #7A5CFA;
+  --orange: #FF8A2B;
+  --pink: #FF8FC7;
+
+  --font-display: "Grandstander", "Comic Sans MS", "Chalkboard SE", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --hard: 0 6px 0 var(--stroke);
+  --hard-sm: 0 4px 0 var(--stroke);
+  --r-lg: 28px;
+  --r-md: 20px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #10143D; --surface: #1A2063; --band: #241F57;
+    --ink: #F5F6FF; --ink-soft: #BAC0EE; --stroke: #050724;
+    --line: rgba(255, 255, 255, .14); --dot: rgba(122, 92, 250, .28);
+    --night: #0A0D2E; --night-deep: #06081F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #10143D; --surface: #1A2063; --band: #241F57;
+  --ink: #F5F6FF; --ink-soft: #BAC0EE; --stroke: #050724;
+  --line: rgba(255, 255, 255, .14); --dot: rgba(122, 92, 250, .28);
+  --night: #0A0D2E; --night-deep: #06081F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+img, svg { max-width: 100%; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 17px/1.6 var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, .display { font-family: var(--font-display); line-height: 1.05; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 4px solid var(--sky); outline-offset: 3px; border-radius: 12px; }
+
+.wrap {
+  max-width: 1160px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.band { position: relative; padding-block: 88px; }
+.dots { background-image: radial-gradient(var(--dot) 2px, transparent 2.5px); background-size: 26px 26px; }
+
+/* ---------- Botão ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .55rem;
+  padding: 18px 34px; border-radius: 999px;
+  background: var(--sun); color: var(--on-color);
+  border: 3px solid var(--stroke); box-shadow: var(--hard);
+  font: 900 1.15rem/1 var(--font-display); letter-spacing: .02em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  position: relative;
+}
+.btn:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 9px 0 var(--stroke); }
+.btn:active { transform: translateY(5px); box-shadow: 0 1px 0 var(--stroke); }
+.btn svg { width: 22px; height: 22px; }
+.btn.small { padding: 11px 20px; font-size: .95rem; box-shadow: var(--hard-sm); }
+.btn.coral { background: var(--coral); color: #fff; }
+
+/* ---------- Header ---------- */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--paper); }
+header.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 2px dashed var(--line);
+}
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 70px; }
+.logo { display: flex; align-items: center; gap: 10px; font: 900 1.35rem/1 var(--font-display); text-decoration: none; }
+.logo .mark { width: 40px; height: 40px; flex: none; animation: spin-slow 14s linear infinite; }
+.logo b { color: var(--coral); font-weight: 900; }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding-block: 56px 110px; overflow: hidden; }
+.hero-grid { display: grid; gap: 48px; align-items: center; grid-template-columns: 1.05fr .95fr; }
+.hero-copy { min-width: 0; }
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 16px; border-radius: 999px;
+  background: var(--surface); border: 2.5px solid var(--stroke); box-shadow: var(--hard-sm);
+  font: 800 .78rem/1.2 var(--font-body); letter-spacing: .08em; text-transform: uppercase;
+  transform: rotate(-2deg);
+}
+.chip .star { color: var(--sun); font-size: 1.1rem; animation: twinkle 1.6s ease-in-out infinite; }
+.hero h1 { margin-top: 26px; font-size: clamp(2.4rem, 5.6vw, 4.3rem); font-weight: 900; letter-spacing: -.01em; }
+.rainbow-word { display: inline-block; white-space: nowrap; }
+.rainbow-word span {
+  display: inline-block; animation: hop 2.4s ease-in-out infinite;
+  -webkit-text-stroke: 2px var(--stroke); paint-order: stroke fill;
+  text-shadow: 0 5px 0 var(--stroke);
+}
+.lead { margin-top: 22px; font-size: 1.2rem; color: var(--ink-soft); max-width: 34ch; }
+.lead strong { color: var(--ink); background: linear-gradient(transparent 60%, color-mix(in srgb, var(--sun) 70%, transparent) 60%); }
+.hero-cta { margin-top: 34px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+.arrow-note { font: 700 1.05rem/1.2 var(--font-display); color: var(--grape); display: flex; align-items: center; gap: 6px; transform: rotate(-4deg); }
+.arrow-note svg { width: 54px; height: 36px; }
+.perks { margin: 28px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px 22px; font-weight: 800; font-size: .95rem; }
+.perks li { display: flex; align-items: center; gap: 8px; }
+.perks i { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--grass); color: #fff; font-style: normal; font-size: .8rem; border: 2px solid var(--stroke); }
+
+/* Céu decorativo */
+.cloud { position: absolute; width: 150px; height: auto; opacity: .95; pointer-events: none; animation: drift 26s linear infinite; }
+.cloud.c1 { top: 40px; left: -160px; }
+.cloud.c2 { top: 260px; left: -160px; width: 100px; animation-duration: 34s; animation-delay: -14s; }
+.cloud.c3 { bottom: 120px; left: -160px; width: 120px; animation-duration: 40s; animation-delay: -26s; }
+.balloon { position: absolute; width: 46px; pointer-events: none; animation: float 6s ease-in-out infinite; }
+.balloon.b1 { top: 18%; right: 3%; }
+.balloon.b2 { top: 64%; left: 2%; width: 36px; animation-delay: -2s; }
+
+/* Folha de colorir interativa */
+.sheet-card {
+  position: relative; min-width: 0;
+  background: var(--sheet); color: var(--sheet-ink);
+  border: 3px solid var(--stroke); border-radius: var(--r-lg);
+  box-shadow: 0 10px 0 var(--stroke);
+  padding: 18px 18px 16px; transform: rotate(1.5deg);
+}
+.sheet-card::before {
+  content: "Experimente! Escolha uma cor e pinte"; position: absolute; top: -18px; left: 22px;
+  background: var(--coral); color: #fff; padding: 6px 14px; border-radius: 999px;
+  border: 2.5px solid var(--stroke); font: 800 .85rem/1.2 var(--font-display); transform: rotate(-3deg);
+  max-width: calc(100% - 40px);
+}
+.sheet-card svg.scene { width: 100%; height: auto; display: block; border-radius: 16px; touch-action: manipulation; }
+.paint { cursor: pointer; transition: fill .35s ease; stroke: var(--sheet-ink); stroke-width: 4; stroke-linejoin: round; transform-box: fill-box; transform-origin: center; }
+.paint:hover { filter: brightness(.96); }
+.paint:focus-visible { outline: none; stroke: var(--grape); stroke-width: 6; }
+.paint.splash { animation: splash .45s ease; }
+.deco-ink { fill: none; stroke: var(--sheet-ink); stroke-width: 4; stroke-linecap: round; }
+.palette { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; }
+.crayon {
+  width: 38px; height: 38px; border-radius: 50%; padding: 0; cursor: pointer;
+  border: 3px solid var(--sheet-ink); background: var(--c);
+  transition: transform .15s; box-shadow: 0 3px 0 var(--sheet-ink);
+}
+.crayon:hover { transform: translateY(-3px); }
+.crayon[aria-pressed="true"] { transform: translateY(-6px) scale(1.12); box-shadow: 0 0 0 4px var(--sheet), 0 0 0 7px var(--c), 0 6px 0 7px var(--sheet-ink); }
+.tool {
+  margin-left: auto; display: flex; gap: 8px;
+}
+.tool button {
+  font: 800 .85rem/1 var(--font-display); padding: 10px 14px; border-radius: 999px; cursor: pointer;
+  border: 2.5px solid var(--sheet-ink); background: var(--sheet); color: var(--sheet-ink); box-shadow: 0 3px 0 var(--sheet-ink);
+}
+.tool button:active { transform: translateY(3px); box-shadow: none; }
+.tool .magic { background: var(--grape); color: #fff; }
+
+/* ---------- Ondas ---------- */
+.wave { position: absolute; left: 0; right: 0; width: 100%; height: 60px; display: block; pointer-events: none; }
+.wave.bottom { bottom: -1px; }
+
+/* ---------- Faixa rolante ---------- */
+.marquee { background: var(--grape); color: #fff; border-block: 3px solid var(--stroke); overflow: hidden; transform: rotate(-1.5deg); margin: -10px -20px 0; position: relative; z-index: 2; }
+.marquee-track { display: flex; width: max-content; animation: scroll-x 28s linear infinite; }
+.marquee span { font: 800 1.2rem/1 var(--font-display); padding: 16px 22px; white-space: nowrap; display: flex; align-items: center; gap: 22px; }
+.marquee span::after { content: "★"; color: var(--sun); }
+
+/* ---------- Títulos de seção ---------- */
+.sec-head { max-width: 720px; margin: 0 auto 52px; text-align: center; }
+.eyebrow {
+  display: inline-block; font: 800 .85rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase;
+  padding: 8px 14px; border-radius: 999px; background: var(--grass); color: #fff; border: 2.5px solid var(--stroke);
+  transform: rotate(-2deg); margin-bottom: 18px;
+}
+.sec-head h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); font-weight: 900; }
+.sec-head p { margin-top: 14px; color: var(--ink-soft); font-size: 1.1rem; }
+.squiggle { display: block; margin: 12px auto 0; width: 150px; height: 18px; }
+
+/* ---------- Adesivos (features) ---------- */
+.features { background: var(--surface); }
+.stickers { display: grid; gap: 26px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sticker {
+  position: relative; background: var(--paper); border: 3px solid var(--stroke); border-radius: var(--r-lg);
+  box-shadow: var(--hard); padding: 26px 22px 24px;
+  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1);
+}
+.sticker:nth-child(odd) { transform: rotate(-2deg); }
+.sticker:nth-child(even) { transform: rotate(2deg) translateY(10px); }
+.sticker:hover { transform: rotate(0) translateY(-8px) scale(1.03); }
+.sticker:hover .ico { animation: wiggle .6s ease; }
+.ico {
+  width: 74px; height: 74px; border-radius: 22px; display: grid; place-items: center; margin-bottom: 18px;
+  background: var(--c); border: 3px solid var(--stroke); box-shadow: var(--hard-sm);
+}
+.ico svg { width: 42px; height: 42px; }
+.sticker h3 { font-size: 1.4rem; font-weight: 800; }
+.sticker p { margin-top: 8px; color: var(--ink-soft); font-size: 1rem; }
+.tape { position: absolute; top: -14px; right: 26px; width: 70px; height: 24px; background: color-mix(in srgb, var(--c) 55%, transparent); border: 2px dashed color-mix(in srgb, var(--stroke) 35%, transparent); transform: rotate(8deg); border-radius: 4px; }
+
+/* ---------- Galeria ---------- */
+.gallery { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
+.page {
+  margin: 0; background: var(--sheet); color: var(--sheet-ink);
+  border: 3px solid var(--stroke); border-radius: 18px; box-shadow: var(--hard);
+  padding: 12px 12px 14px; cursor: pointer;
+  transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+}
+.page:nth-child(1) { transform: rotate(-4deg); }
+.page:nth-child(2) { transform: rotate(3deg) translateY(16px); }
+.page:nth-child(3) { transform: rotate(-1deg); }
+.page:nth-child(4) { transform: rotate(4deg) translateY(12px); }
+.page:nth-child(5) { transform: rotate(-3deg); }
+.page:hover, .page:focus-visible { transform: rotate(0) translateY(-10px) scale(1.05); z-index: 2; }
+.page svg { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; max-width: 100%; background: var(--sheet); border-radius: 10px; border: 2px dashed rgba(27, 31, 94, .18); }
+.page svg * { stroke: var(--sheet-ink); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
+.page .f { fill: #fff; transition: fill .5s ease; }
+.page .n { fill: none; }
+.page.colored .f { fill: var(--fc); }
+.page figcaption { margin-top: 10px; text-align: center; font: 800 1rem/1.2 var(--font-display); }
+.page figcaption small { display: block; font: 700 .75rem/1.4 var(--font-body); letter-spacing: .08em; text-transform: uppercase; opacity: .6; }
+.hint { text-align: center; margin-top: 44px; font: 700 1rem/1.3 var(--font-display); color: var(--ink-soft); }
+
+/* ---------- Benefícios ---------- */
+.benefits { background: var(--band); }
+.ben-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.meadow {
+  position: relative; border: 3px solid var(--stroke); border-radius: 36px; box-shadow: 0 10px 0 var(--stroke);
+  background: linear-gradient(#8ED8FF 0 62%, #5CCB7F 62% 100%); overflow: hidden; aspect-ratio: 1 / 1; max-width: 100%;
+  transform: rotate(-2deg);
+}
+.meadow .sun { position: absolute; top: 9%; right: 10%; width: 26%; animation: spin-slow 18s linear infinite; }
+.meadow .hill { position: absolute; left: -10%; right: -10%; bottom: 0; width: 120%; }
+.sheep { position: absolute; left: 22%; bottom: 14%; width: 46%; cursor: pointer; background: none; border: 0; padding: 0; }
+.sheep svg { width: 100%; height: auto; display: block; overflow: visible; }
+.sheep.jump { animation: jump .7s cubic-bezier(.3, .7, .4, 1); }
+.bubble {
+  position: absolute; left: 50%; top: 13%; transform: translateX(-30%) scale(0); transform-origin: bottom left;
+  background: #fff; color: #1B1F5E; border: 3px solid #1B1F5E; border-radius: 20px; padding: 10px 16px;
+  font: 800 1rem/1.2 var(--font-display); white-space: nowrap; transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+}
+.bubble.show { transform: translateX(-30%) scale(1); }
+.count-badge {
+  position: absolute; left: 6%; top: 8%; background: var(--coral); color: #fff; border: 3px solid var(--stroke);
+  border-radius: 50%; width: 30%; aspect-ratio: 1; display: grid; place-content: center; text-align: center;
+  font-family: var(--font-display); box-shadow: var(--hard-sm); transform: rotate(-10deg);
+}
+.count-badge b { font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1; font-weight: 900; font-variant-numeric: tabular-nums; }
+.count-badge small { font-size: clamp(.65rem, 1.4vw, .85rem); font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+.ben-copy { min-width: 0; }
+.ben-copy .sec-head { text-align: left; margin: 0 0 30px; }
+.ben-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.ben-list li {
+  display: flex; align-items: center; gap: 16px; background: var(--surface);
+  border: 3px solid var(--stroke); border-radius: var(--r-md); padding: 14px 18px; box-shadow: var(--hard-sm);
+  font-weight: 800; transition: transform .2s;
+}
+.ben-list li:hover { transform: translateX(8px) rotate(-.5deg); }
+.ben-list .b-ico { width: 46px; height: 46px; flex: none; border-radius: 14px; display: grid; place-items: center; background: var(--c); border: 2.5px solid var(--stroke); }
+.ben-list .b-ico svg { width: 26px; height: 26px; }
+
+/* ---------- Depoimentos ---------- */
+.testis { background: var(--surface); }
+.chat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; align-items: start; }
+.chat {
+  border: 3px solid var(--stroke); border-radius: 24px; overflow: hidden; box-shadow: var(--hard); background: #E7DDD1;
+  color: #1B1F5E;
+}
+.chat:nth-child(even) { transform: translateY(26px) rotate(1.5deg); }
+.chat:nth-child(odd) { transform: rotate(-1.5deg); }
+.chat-top { background: #128C7E; color: #fff; display: flex; align-items: center; gap: 10px; padding: 10px 14px; font-weight: 800; font-size: .9rem; }
+.chat-top .av { width: 32px; height: 32px; border-radius: 50%; background: var(--c); border: 2px solid #fff; display: grid; place-items: center; font-family: var(--font-display); color: #1B1F5E; }
+.chat-body { padding: 14px; display: grid; gap: 8px; }
+.msg { background: #fff; border-radius: 4px 14px 14px 14px; padding: 9px 12px; font-size: .92rem; line-height: 1.45; max-width: 92%; box-shadow: 0 1px 0 rgba(0, 0, 0, .12); }
+.msg.me { background: #D9FDD3; justify-self: end; border-radius: 14px 4px 14px 14px; }
+.msg time { display: block; text-align: right; font-size: .7rem; opacity: .55; margin-top: 2px; }
+.sample-note { text-align: center; margin-top: 56px; font-size: .85rem; color: var(--ink-soft); }
+
+/* ---------- Oferta ---------- */
+.offer { background: var(--night); color: var(--on-night); overflow: hidden; padding-block: 110px 100px; }
+.sky-stars { position: absolute; inset: 0; pointer-events: none; }
+.sky-stars i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #fff; animation: twinkle 2.5s ease-in-out infinite; }
+.offer .sec-head h2 { color: #fff; }
+.offer .sec-head h2 em { font-style: normal; color: var(--sun); }
+.offer .sec-head p { color: rgba(255, 255, 255, .85); }
+.moon { position: absolute; top: 60px; right: 6%; width: 90px; animation: float 7s ease-in-out infinite; }
+.price-card {
+  position: relative; max-width: 470px; margin: 70px auto 0; text-align: center;
+  background: var(--sheet); color: var(--sheet-ink); border: 4px solid var(--sun); border-radius: 36px;
+  padding: 90px 32px 34px; box-shadow: 0 14px 0 var(--sun), 0 30px 60px rgba(0, 0, 0, .35);
+}
+.kit {
+  position: absolute; top: -78px; left: 50%; transform: translateX(-50%) rotate(-6deg); width: 190px;
+  animation: kit-bob 4s ease-in-out infinite;
+}
+.ribbon {
+  position: absolute; top: 22px; right: -14px; background: var(--coral); color: #fff;
+  font: 900 .85rem/1 var(--font-display); padding: 10px 16px; border: 3px solid #1B1F5E; border-radius: 10px; transform: rotate(10deg);
+}
+.price-card .lbl { font: 800 .85rem/1 var(--font-body); letter-spacing: .14em; text-transform: uppercase; opacity: .65; }
+.price { font: 900 4.6rem/1 var(--font-display); margin-top: 10px; color: #1B1F5E; font-variant-numeric: tabular-nums; }
+.price sup { font-size: 1.6rem; vertical-align: top; position: relative; top: .7em; margin-right: 4px; }
+.once { font-weight: 800; color: var(--grass); margin-top: 4px; }
+.includes { list-style: none; padding: 0; margin: 22px 0 26px; text-align: left; display: grid; gap: 10px; font-weight: 700; color: #1B1F5E; }
+.includes li { display: flex; gap: 10px; align-items: flex-start; }
+.includes li::before { content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--grass); color: #fff; display: grid; place-items: center; font-size: .8rem; border: 2px solid #1B1F5E; margin-top: 1px; }
+.price-card .btn { width: 100%; --stroke: #1B1F5E; }
+.secure { margin-top: 18px; font-size: .9rem; display: flex; align-items: center; justify-content: center; gap: 8px; color: #4B5190; }
+.secure svg { width: 18px; height: 18px; }
+
+/* ---------- FAQ ---------- */
+.faq-list { max-width: 780px; margin: 0 auto; display: grid; gap: 14px; }
+.faq-list details {
+  background: var(--surface); border: 3px solid var(--stroke); border-radius: var(--r-md); box-shadow: var(--hard-sm);
+  transition: transform .2s;
+}
+.faq-list details[open] { transform: rotate(-.6deg); }
+.faq-list summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 22px; font: 800 1.15rem/1.3 var(--font-display);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list .pm {
+  flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--sun); border: 2.5px solid var(--stroke);
+  display: grid; place-items: center; transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), background .3s; color: var(--on-color);
+  font: 900 1.3rem/1 var(--font-display);
+}
+.faq-list details[open] .pm { transform: rotate(135deg); background: var(--coral); color: #fff; }
+.faq-list .ans { padding: 0 22px 20px; color: var(--ink-soft); animation: drop .35s ease; }
+
+/* ---------- Rodapé ---------- */
+footer { background: var(--night-deep); color: var(--on-night); padding-block: 56px 40px; text-align: center; position: relative; }
+footer .logo { justify-content: center; font-size: 1.8rem; color: #fff; }
+footer .logo b { color: var(--sun); }
+footer p { margin-top: 12px; font-size: .92rem; opacity: .8; }
+footer small { display: block; margin-top: 18px; font-size: .78rem; opacity: .6; }
+
+/* ---------- Confete ---------- */
+#confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
+
+/* ---------- Entrada (parte de um estado visível) ---------- */
+.pop.in { animation: pop-in .7s cubic-bezier(.34, 1.56, .64, 1) both; }
+
+/* ---------- Keyframes ---------- */
+@keyframes hop { 0%, 100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-10px) rotate(-4deg); } 50% { transform: translateY(0) rotate(0); } }
+@keyframes drift { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 340px)); } }
+@keyframes float { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-18px) rotate(3deg); } }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+@keyframes twinkle { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .35; transform: scale(.7); } }
+@keyframes splash { 0% { transform: scale(1); } 40% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes scroll-x { to { transform: translateX(-50%); } }
+@keyframes wiggle { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-12deg); } 40% { transform: rotate(10deg); } 60% { transform: rotate(-6deg); } 80% { transform: rotate(4deg); } }
+@keyframes jump { 0% { transform: translateY(0); } 30% { transform: translateY(-38%) rotate(-6deg); } 55% { transform: translateY(0) scaleY(.88); } 75% { transform: translateY(-8%); } 100% { transform: translateY(0); } }
+@keyframes kit-bob { 0%, 100% { transform: translateX(-50%) rotate(-6deg) translateY(0); } 50% { transform: translateX(-50%) rotate(-2deg) translateY(-10px); } }
+@keyframes pop-in { from { transform: translateY(30px) scale(.92); } }
+@keyframes drop { from { opacity: 0; transform: translateY(-6px); } }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 980px) {
+  .stickers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .chat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .hero-grid, .ben-grid { grid-template-columns: 1fr; }
+  .hero-copy { text-align: center; }
+  .lead { margin-inline: auto; }
+  .hero-cta, .perks { justify-content: center; }
+  .arrow-note { display: none; }
+  .sheet-card { max-width: 520px; margin: 14px auto 0; width: 100%; }
+  .meadow { max-width: 440px; margin: 0 auto; width: 100%; }
+  .ben-copy .sec-head { text-align: center; }
+  .gallery {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 18px;
+    padding: 20px 16px 34px; margin-inline: -16px;
+  }
+  .page { flex: 0 0 62%; scroll-snap-align: center; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .band { padding-block: 68px; }
+  .stickers { grid-template-columns: 1fr; gap: 22px; }
+  .sticker:nth-child(even) { transform: rotate(1.5deg); }
+  .chat-grid { grid-template-columns: 1fr; }
+  .chat:nth-child(even) { transform: rotate(1.5deg); }
+  header.top .btn { display: none; }
+  .tool { margin-left: 0; width: 100%; }
+  .tool button { flex: 1; }
+  .crayon { width: 34px; height: 34px; }
+  .price { font-size: 3.8rem; }
+  .moon { width: 60px; top: 30px; }
+  .page { flex-basis: 72%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#topo" aria-label="Pequenos com Jesus, início">
+      <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+        <g fill="#FFC83D" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round">
+          <path d="M20 2l4.6 9.4 10.4 1.5-7.5 7.3 1.8 10.3L20 25.6l-9.3 4.9 1.8-10.3L5 12.9l10.4-1.5z"/>
+        </g>
+        <circle cx="16.5" cy="17" r="1.6" fill="#1B1F5E"/><circle cx="23.5" cy="17" r="1.6" fill="#1B1F5E"/>
+        <path d="M16.5 21q3.5 3 7 0" fill="none" stroke="#1B1F5E" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span>Pequenos com <b>Jesus</b></span>
+    </a>
+    <a class="btn small js-scroll" href="#oferta">Quero o kit</a>
+  </div>
+</header>
+
+<main id="topo">
+<!-- ================= HERO ================= -->
+<section class="hero dots">
+  <svg class="cloud c1" viewBox="0 0 150 80" aria-hidden="true"><path d="M30 70a25 25 0 0 1 2-50 32 32 0 0 1 60-6 26 26 0 0 1 32 26 20 20 0 0 1-4 30z" fill="#fff" stroke="#1B1F5E" stroke-width="3"/></svg>
+  <svg class="cloud c2" viewBox="0 0 150 80" aria-hidden="true"><path d="M30 70a25 25 0 0 1 2-50 32 32 0 0 1 60-6 26 26 0 0 1 32 26 20 20 0 0 1-4 30z" fill="#fff" stroke="#1B1F5E" stroke-width="3"/></svg>
+  <svg class="cloud c3" viewBox="0 0 150 80" aria-hidden="true"><path d="M30 70a25 25 0 0 1 2-50 32 32 0 0 1 60-6 26 26 0 0 1 32 26 20 20 0 0 1-4 30z" fill="#fff" stroke="#1B1F5E" stroke-width="3"/></svg>
+  <svg class="balloon b1" viewBox="0 0 46 90" aria-hidden="true"><path d="M23 60c-12 0-21-12-21-27S11 2 23 2s21 16 21 31-9 27-21 27z" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="3"/><path d="M19 60l4 6 4-6z" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M23 66q-6 10 0 22" fill="none" stroke="#1B1F5E" stroke-width="2"/><ellipse cx="14" cy="20" rx="4" ry="7" fill="#fff" opacity=".6"/></svg>
+  <svg class="balloon b2" viewBox="0 0 46 90" aria-hidden="true"><path d="M23 60c-12 0-21-12-21-27S11 2 23 2s21 16 21 31-9 27-21 27z" fill="#7A5CFA" stroke="#1B1F5E" stroke-width="3"/><path d="M19 60l4 6 4-6z" fill="#7A5CFA" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M23 66q6 10 0 22" fill="none" stroke="#1B1F5E" stroke-width="2"/><ellipse cx="14" cy="20" rx="4" ry="7" fill="#fff" opacity=".6"/></svg>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="chip"><span class="star" aria-hidden="true">★</span> Um jeito divertido de aprender a Palavra de Deus</span>
+      <h1>Ensine a Palavra de Deus de um jeito que as crianças <span class="rainbow-word" id="rainbow" aria-label="vão amar!">vão amar!</span></h1>
+      <p class="lead">São <strong>mais de 400 atividades bíblicas</strong> para colorir, recortar e brincar. É só imprimir e ver os pequenos aprendendo com alegria.</p>
+      <div class="hero-cta">
+        <a class="btn js-scroll js-party" href="#oferta">
+          Quero conhecer o kit
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <span class="arrow-note">
+          <svg viewBox="0 0 54 36" aria-hidden="true"><path d="M50 30C38 34 18 30 8 10M8 10l-2 11M8 10l10 3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          pinte a arca ao lado!
+        </span>
+      </div>
+      <ul class="perks">
+        <li><i aria-hidden="true">✓</i> Acesso imediato</li>
+        <li><i aria-hidden="true">✓</i> Imprima quantas vezes quiser</li>
+        <li><i aria-hidden="true">✓</i> Pagamento seguro</li>
+      </ul>
+    </div>
+
+    <!-- Folha de colorir -->
+    <div class="sheet-card">
+      <svg class="scene" id="scene" viewBox="0 0 400 340" role="group" aria-label="Desenho da Arca de Noé para colorir">
+        <rect x="0" y="0" width="400" height="340" fill="#FFFFFF"/>
+        <!-- arco-íris -->
+        <path class="paint" data-hint="#FF5C6C" d="M30 250A170 170 0 0 1 370 250H348A148 148 0 0 0 52 250Z" aria-label="Arco-íris, faixa de fora"/>
+        <path class="paint" data-hint="#FFC83D" d="M52 250A148 148 0 0 1 348 250H326A126 126 0 0 0 74 250Z" aria-label="Arco-íris, faixa do meio"/>
+        <path class="paint" data-hint="#2EB8F0" d="M74 250A126 126 0 0 1 326 250H304A104 104 0 0 0 96 250Z" aria-label="Arco-íris, faixa de dentro"/>
+        <!-- sol -->
+        <g class="deco-ink">
+          <path d="M340 18v-12M340 102v12M298 60h-12M382 60h12M310 30l-8-8M370 30l8-8M310 90l-8 8M370 90l8 8"/>
+        </g>
+        <circle class="paint" data-hint="#FFC83D" cx="340" cy="60" r="30" aria-label="Sol"/>
+        <!-- nuvem -->
+        <path class="paint" data-hint="#EAF6FF" d="M40 90a18 18 0 0 1 2-36 24 24 0 0 1 44-4 19 19 0 0 1 24 19 15 15 0 0 1-3 21z" aria-label="Nuvem"/>
+        <!-- pomba -->
+        <path class="paint" data-hint="#FFFFFF" d="M150 70q14-14 30-4l14-6-6 12q4 14-14 18-18 2-24-20z" aria-label="Pombinha"/>
+        <path class="paint" data-hint="#FF8FC7" d="M164 76q6-18 22-16-4 14-22 16z" aria-label="Asa da pombinha"/>
+        <!-- telhado e cabine -->
+        <path class="paint" data-hint="#FF5C6C" d="M112 186L200 136L288 186Z" aria-label="Telhado"/>
+        <rect class="paint" data-hint="#FFC83D" x="130" y="186" width="140" height="56" rx="4" aria-label="Cabine"/>
+        <circle class="paint" data-hint="#2EB8F0" cx="166" cy="212" r="12" aria-label="Janela 1"/>
+        <circle class="paint" data-hint="#2EB8F0" cx="200" cy="212" r="12" aria-label="Janela 2"/>
+        <circle class="paint" data-hint="#2EB8F0" cx="234" cy="212" r="12" aria-label="Janela 3"/>
+        <!-- girafinha -->
+        <path class="paint" data-hint="#FF8A2B" d="M252 186V150q0-12 12-12h8q8 0 8 8t-10 8h-4v32z" aria-label="Girafa"/>
+        <circle cx="270" cy="146" r="2.5" fill="#1B1F5E"/>
+        <!-- casco -->
+        <path class="paint" data-hint="#A0612E" d="M62 242H338L306 300H94Z" aria-label="Casco da arca"/>
+        <path class="paint" data-hint="#22B36A" d="M74 256H326L318 270H82Z" aria-label="Faixa do casco"/>
+        <!-- ondas -->
+        <path class="paint" data-hint="#2EB8F0" d="M0 296q25-16 50 0t50 0 50 0 50 0 50 0 50 0 50 0 50 0V340H0Z" aria-label="Mar"/>
+      </svg>
+      <div class="palette" role="toolbar" aria-label="Cores">
+        <button class="crayon" style="--c:#FF5C6C" data-color="#FF5C6C" aria-label="Vermelho" aria-pressed="true"></button>
+        <button class="crayon" style="--c:#FFC83D" data-color="#FFC83D" aria-label="Amarelo" aria-pressed="false"></button>
+        <button class="crayon" style="--c:#22B36A" data-color="#22B36A" aria-label="Verde" aria-pressed="false"></button>
+        <button class="crayon" style="--c:#2EB8F0" data-color="#2EB8F0" aria-label="Azul" aria-pressed="false"></button>
+        <button class="crayon" style="--c:#7A5CFA" data-color="#7A5CFA" aria-label="Roxo" aria-pressed="false"></button>
+        <button class="crayon" style="--c:#FF8A2B" data-color="#FF8A2B" aria-label="Laranja" aria-pressed="false"></button>
+        <button class="crayon" style="--c:#FF8FC7" data-color="#FF8FC7" aria-label="Rosa" aria-pressed="false"></button>
+        <div class="tool">
+          <button class="magic" id="magic" type="button">✨ Mágica</button>
+          <button id="clear" type="button">Apagar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30q120-30 240 0t240 0 240 0 240 0 240 0 240 0V60H0z" style="fill: var(--surface)"/></svg>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>+400 atividades bíblicas</span><span>Histórias para colorir</span><span>Versículos para decorar</span><span>Caça-palavras e labirintos</span><span>Acesso imediato</span><span>Ideal para casa e igreja</span>
+    <span>+400 atividades bíblicas</span><span>Histórias para colorir</span><span>Versículos para decorar</span><span>Caça-palavras e labirintos</span><span>Acesso imediato</span><span>Ideal para casa e igreja</span>
+  </div>
+</div>
+
+<!-- ================= O QUE VAI ENCONTRAR ================= -->
+<section class="band features">
+  <div class="wrap">
+    <div class="sec-head pop">
+      <span class="eyebrow">O que você vai encontrar</span>
+      <h2>Um universo de aprendizado bíblico</h2>
+      <svg class="squiggle" viewBox="0 0 150 18" aria-hidden="true"><path d="M3 9q9-9 18 0t18 0 18 0 18 0 18 0 18 0 18 0 18 0" fill="none" stroke="#FF5C6C" stroke-width="4" stroke-linecap="round"/></svg>
+    </div>
+    <div class="stickers">
+      <article class="sticker pop" style="--c: var(--sky)">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M4 9q8-4 17 2v24q-9-6-17-2z" fill="#fff" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M38 9q-8-4-17 2v24q9-6 17-2z" fill="#fff" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M29 15v8M25 18h8" stroke="#FF5C6C" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <h3>Histórias bíblicas</h3>
+        <p>Atividades que apresentam as passagens da Bíblia de forma simples, do jeitinho que a criança entende.</p>
+      </article>
+      <article class="sticker pop" style="--c: var(--sun)">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M10 34l-3 3 1-6L28 11l5 5L13 36z" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 11l4-4 5 5-4 4" fill="#fff" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><circle cx="12" cy="11" r="3" fill="#22B36A" stroke="#1B1F5E" stroke-width="2"/><circle cx="33" cy="31" r="3" fill="#7A5CFA" stroke="#1B1F5E" stroke-width="2"/></svg></div>
+        <h3>Desenhos para colorir</h3>
+        <p>Personagens e cenas bíblicas com traços grandes, perfeitos para mãozinhas pequenas.</p>
+      </article>
+      <article class="sticker pop" style="--c: var(--pink)">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M21 36S6 27 6 16a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 11-15 20-15 20z" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><path d="M13 16q1-4 5-4" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <h3>Versículos para decorar</h3>
+        <p>Cartões ilustrados que ajudam os pequenos a guardar a Palavra no coração.</p>
+      </article>
+      <article class="sticker pop" style="--c: var(--grass)">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="ico"><svg viewBox="0 0 42 42" aria-hidden="true"><rect x="6" y="6" width="30" height="30" rx="5" fill="#fff" stroke="#1B1F5E" stroke-width="2.5"/><path d="M6 16h10v10M26 6v14h10M16 36V30h12" fill="none" stroke="#1B1F5E" stroke-width="2.5" stroke-linejoin="round"/><circle cx="11" cy="11" r="2.5" fill="#FFC83D" stroke="#1B1F5E" stroke-width="1.5"/><path d="M30 29l2 2 4-4" fill="none" stroke="#22B36A" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <h3>Passatempos</h3>
+        <p>Caça-palavras, labirintos, ligue os pontos e jogos que fixam o que foi aprendido.</p>
+      </article>
+    </div>
+  </div>
+  <svg class="wave bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40q180-40 360-10t360 0 360-10 360 10V60H0z" style="fill: var(--paper)"/></svg>
+</section>
+
+<!-- ================= GALERIA ================= -->
+<section class="band dots">
+  <div class="wrap">
+    <div class="sec-head pop">
+      <span class="eyebrow" style="background: var(--coral)">Espie algumas páginas</span>
+      <h2>Desenhos que ganham cor a cada página</h2>
+      <p>Passe o mouse ou toque numa folha para ver como fica pintadinha.</p>
+    </div>
+    <div class="gallery">
+      <!-- Jonas -->
+      <figure class="page pop" tabindex="0">
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <path class="n" d="M58 46q-4-14 0-20M62 46q8-12 14-12M54 46q-8-10-14-8"/>
+          <path class="f" style="--fc:#2EB8F0" d="M14 90q4-38 46-40 40-2 46 28l10-14v34l-12-8q-10 26-48 24-44-2-42-24z"/>
+          <path class="f" style="--fc:#EAF6FF" d="M22 96q30 14 70 0-6 18-36 18-28 0-34-18z"/>
+          <circle class="f" style="--fc:#fff" cx="38" cy="78" r="5"/>
+          <path class="f" style="--fc:#22B36A" d="M0 128q15-10 30 0t30 0 30 0 30 0V150H0z"/>
+        </svg>
+        <figcaption>Jonas e o grande peixe<small>Jonas 2</small></figcaption>
+      </figure>
+      <!-- Ovelha -->
+      <figure class="page pop" tabindex="0">
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <path class="f" style="--fc:#22B36A" d="M0 112q30-14 60 0t60 0V150H0z"/>
+          <path class="f" style="--fc:#fff" d="M30 92a12 12 0 0 1 4-22 14 14 0 0 1 24-8 14 14 0 0 1 24 6 12 12 0 0 1 6 22 12 12 0 0 1-16 8 14 14 0 0 1-24 0 12 12 0 0 1-18-6z"/>
+          <path class="n" d="M44 104v14M56 106v14M70 106v14M80 102v14"/>
+          <ellipse class="f" style="--fc:#FFC8A8" cx="88" cy="70" rx="12" ry="14"/>
+          <circle cx="92" cy="68" r="2" fill="#1B1F5E" stroke="none"/>
+          <circle class="f" style="--fc:#FFC83D" cx="26" cy="30" r="12"/>
+        </svg>
+        <figcaption>A ovelha perdida<small>Lucas 15</small></figcaption>
+      </figure>
+      <!-- Daniel -->
+      <figure class="page pop" tabindex="0">
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <path class="f" style="--fc:#FF8A2B" d="M60 34l8 8 11-3 2 11 11 3-3 11 8 8-8 8 3 11-11 3-2 11-11-3-8 8-8-8-11 3-2-11-11-3 3-11-8-8 8-8-3-11 11-3 2-11 11 3z"/>
+          <circle class="f" style="--fc:#FFC83D" cx="60" cy="74" r="24"/>
+          <circle cx="51" cy="70" r="2.5" fill="#1B1F5E" stroke="none"/><circle cx="69" cy="70" r="2.5" fill="#1B1F5E" stroke="none"/>
+          <path class="f" style="--fc:#FF5C6C" d="M55 78h10l-5 6z"/>
+          <path class="n" d="M52 88q8 6 16 0"/>
+          <path class="f" style="--fc:#7A5CFA" d="M0 130h120V150H0z"/>
+        </svg>
+        <figcaption>Daniel e os leões<small>Daniel 6</small></figcaption>
+      </figure>
+      <!-- Estrela de Belém -->
+      <figure class="page pop" tabindex="0">
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <path class="f" style="--fc:#FFC83D" d="M60 12l6 14 15 1-11 10 4 15-14-8-14 8 4-15-11-10 15-1z"/>
+          <path class="n" d="M60 56v14M40 50l-8 8M80 50l8 8"/>
+          <path class="f" style="--fc:#FF5C6C" d="M24 96l36-24 36 24z"/>
+          <rect class="f" style="--fc:#A0612E" x="32" y="96" width="56" height="34"/>
+          <path class="f" style="--fc:#FFC83D" d="M44 118q16-10 32 0v12H44z"/>
+          <circle class="f" style="--fc:#FFC8A8" cx="60" cy="114" r="6"/>
+        </svg>
+        <figcaption>O nascimento de Jesus<small>Lucas 2</small></figcaption>
+      </figure>
+      <!-- Criação -->
+      <figure class="page pop" tabindex="0">
+        <svg viewBox="0 0 120 150" aria-hidden="true">
+          <circle class="f" style="--fc:#FFC83D" cx="34" cy="34" r="16"/>
+          <path class="f" style="--fc:#FFF0C2" d="M92 20a16 16 0 1 0 8 30 18 18 0 0 1-8-30z"/>
+          <path class="f" style="--fc:#22B36A" d="M0 104q30-18 60 0t60 0V150H0z"/>
+          <path class="n" d="M60 104V76"/>
+          <path class="f" style="--fc:#22B36A" d="M60 92q-14-2-16-14 14 0 16 14z"/>
+          <circle class="f" style="--fc:#FF8FC7" cx="60" cy="68" r="9"/>
+          <circle class="f" style="--fc:#FFC83D" cx="60" cy="68" r="3.5"/>
+          <path class="f" style="--fc:#2EB8F0" d="M20 128q10-10 22 0-12 10-22 0zm22 0l6-5v10z"/>
+        </svg>
+        <figcaption>A criação do mundo<small>Gênesis 1</small></figcaption>
+      </figure>
+    </div>
+    <p class="hint">E tem muito mais: são mais de 400 páginas esperando por lápis de cor!</p>
+  </div>
+</section>
+
+<!-- ================= POR QUE ESCOLHER ================= -->
+<section class="band benefits">
+  <svg class="wave" style="top:-1px; transform: scaleY(-1)" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30q120-30 240 0t240 0 240 0 240 0 240 0 240 0V60H0z" style="fill: var(--paper)"/></svg>
+  <div class="wrap ben-grid">
+    <div class="meadow pop">
+      <svg class="sun" viewBox="0 0 100 100" aria-hidden="true"><g stroke="#1B1F5E" stroke-width="4" stroke-linecap="round"><path d="M50 4v14M50 82v14M4 50h14M82 50h14M17 17l10 10M73 73l10 10M17 83l10-10M73 27l10-10"/></g><circle cx="50" cy="50" r="24" fill="#FFC83D" stroke="#1B1F5E" stroke-width="4"/></svg>
+      <div class="count-badge"><b id="counter">400</b><small>atividades</small></div>
+      <svg class="hill" viewBox="0 0 400 120" aria-hidden="true"><path d="M0 60q100-60 200-10t200-20V120H0z" fill="#3FB86A" stroke="#1B1F5E" stroke-width="3"/><g fill="#FF8FC7" stroke="#1B1F5E" stroke-width="2"><circle cx="60" cy="88" r="6"/><circle cx="330" cy="80" r="6"/><circle cx="250" cy="100" r="5"/></g><g fill="#FFC83D"><circle cx="60" cy="88" r="2"/><circle cx="330" cy="80" r="2"/><circle cx="250" cy="100" r="2"/></g></svg>
+      <button class="sheep" id="sheep" type="button" aria-label="Ovelhinha: toque para ela pular">
+        <svg viewBox="0 0 200 150" aria-hidden="true">
+          <g stroke="#1B1F5E" stroke-width="5" stroke-linecap="round"><path d="M60 110v30M80 112v30M120 112v30M140 110v30"/></g>
+          <path d="M40 92a22 22 0 0 1 8-40 26 26 0 0 1 44-14 26 26 0 0 1 44 10 22 22 0 0 1 12 40 22 22 0 0 1-30 14 26 26 0 0 1-44 0 22 22 0 0 1-34-10z" fill="#fff" stroke="#1B1F5E" stroke-width="5"/>
+          <ellipse cx="160" cy="60" rx="24" ry="28" fill="#FFD6BE" stroke="#1B1F5E" stroke-width="5"/>
+          <path d="M140 44q-14-4-18 8 10 4 18 0M180 44q14-4 18 8-10 4-18 0" fill="#FFD6BE" stroke="#1B1F5E" stroke-width="4" stroke-linejoin="round"/>
+          <circle cx="152" cy="58" r="4" fill="#1B1F5E"/><circle cx="170" cy="58" r="4" fill="#1B1F5E"/>
+          <circle cx="146" cy="70" r="5" fill="#FF8FC7"/><circle cx="176" cy="70" r="5" fill="#FF8FC7"/>
+          <path d="M154 74q7 6 14 0" fill="none" stroke="#1B1F5E" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="bubble" id="bubble" aria-live="polite">Méé! O Senhor é meu pastor!</div>
+    </div>
+
+    <div class="ben-copy">
+      <div class="sec-head pop">
+        <span class="eyebrow" style="background: var(--grape)">Por que escolher</span>
+        <h2>Aprender a Bíblia vira a hora favorita do dia</h2>
+      </div>
+      <ul class="ben-list">
+        <li class="pop" style="--c: var(--sun)"><span class="b-ico"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M6 20l-2 2 1-4L17 6l3 3L8 21z" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="2" stroke-linejoin="round"/></svg></span>Incentiva a criatividade por meio da pintura</li>
+        <li class="pop" style="--c: var(--sky)"><span class="b-ico"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M3 6q5-2 10 1v14q-5-3-10-1zM23 6q-5-2-10 1v14q5-3 10-1z" fill="#fff" stroke="#1B1F5E" stroke-width="2" stroke-linejoin="round"/></svg></span>Ensina histórias bíblicas brincando</li>
+        <li class="pop" style="--c: var(--pink)"><span class="b-ico"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M8 14V6a2 2 0 0 1 4 0v6-8a2 2 0 0 1 4 0v8-6a2 2 0 0 1 4 0v9q0 8-7 8-5 0-8-5l-2-4a2 2 0 0 1 3-2z" fill="#FFD6BE" stroke="#1B1F5E" stroke-width="2" stroke-linejoin="round"/></svg></span>Desenvolve a coordenação motora fina</li>
+        <li class="pop" style="--c: var(--grass)"><span class="b-ico"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 22S3 16 3 9a5 5 0 0 1 10-2 5 5 0 0 1 10 2c0 7-10 13-10 13z" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="2" stroke-linejoin="round"/></svg></span>Fortalece valores cristãos desde cedo</li>
+        <li class="pop" style="--c: var(--orange)"><span class="b-ico"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="9" cy="8" r="4" fill="#FFD6BE" stroke="#1B1F5E" stroke-width="2"/><circle cx="18" cy="10" r="3" fill="#FFD6BE" stroke="#1B1F5E" stroke-width="2"/><path d="M2 22q1-8 7-8t7 8zM14 22q0-6 4-6t6 6z" fill="#fff" stroke="#1B1F5E" stroke-width="2" stroke-linejoin="round"/></svg></span>Cria momentos especiais em família</li>
+        <li class="pop" style="--c: var(--grape)"><span class="b-ico"><svg viewBox="0 0 26 26" aria-hidden="true"><path d="M13 3v6M10 6h6" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><path d="M5 23V14l8-5 8 5v9z" fill="#fff" stroke="#1B1F5E" stroke-width="2" stroke-linejoin="round"/><rect x="11" y="17" width="4" height="6" fill="#FFC83D" stroke="#1B1F5E" stroke-width="1.5"/></svg></span>Pronto para a escola dominical e o ministério infantil</li>
+      </ul>
+    </div>
+  </div>
+  <svg class="wave bottom" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40q180-40 360-10t360 0 360-10 360 10V60H0z" style="fill: var(--surface)"/></svg>
+</section>
+
+<!-- ================= DEPOIMENTOS ================= -->
+<section class="band testis">
+  <div class="wrap">
+    <div class="sec-head pop">
+      <span class="eyebrow" style="background: var(--sky)">Quem usa, ama</span>
+      <h2>Mensagens que deixam o coração quentinho</h2>
+    </div>
+    <div class="chat-grid">
+      <div class="chat pop" style="--c: var(--sun)">
+        <div class="chat-top"><span class="av">A</span> Mãe da Alice</div>
+        <div class="chat-body">
+          <div class="msg">Ela pediu para pintar a arca de Noé de novo hoje 😍<time>19:42</time></div>
+          <div class="msg">E ainda me contou a história inteirinha!<time>19:43</time></div>
+        </div>
+      </div>
+      <div class="chat pop" style="--c: var(--pink)">
+        <div class="chat-top"><span class="av">T</span> Tia do infantil</div>
+        <div class="chat-body">
+          <div class="msg">Usei na escola dominical e as crianças ficaram quietinhas pintando e perguntando sobre Jonas.<time>11:05</time></div>
+          <div class="msg me">Que lindo! 🙌<time>11:06</time></div>
+        </div>
+      </div>
+      <div class="chat pop" style="--c: var(--grass)">
+        <div class="chat-top"><span class="av">R</span> Pai do Rafa</div>
+        <div class="chat-body">
+          <div class="msg">Imprimi os versículos e colamos na geladeira. Ele já sabe o Salmo 23 de cor!<time>08:20</time></div>
+        </div>
+      </div>
+      <div class="chat pop" style="--c: var(--sky)">
+        <div class="chat-top"><span class="av">L</span> Vó Lúcia</div>
+        <div class="chat-body">
+          <div class="msg">Os netos vieram no fim de semana e passamos a tarde toda nos caça-palavras 🥰<time>16:31</time></div>
+          <div class="msg">Valeu cada centavo.<time>16:31</time></div>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">Mensagens de exemplo. Troque pelos prints reais dos seus clientes.</p>
+  </div>
+</section>
+
+<!-- ================= OFERTA ================= -->
+<section class="band offer" id="oferta">
+  <svg class="wave" style="top:-1px; transform: scaleY(-1)" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30q120-30 240 0t240 0 240 0 240 0 240 0 240 0V60H0z" style="fill: var(--surface)"/></svg>
+  <div class="sky-stars" id="stars" aria-hidden="true"></div>
+  <svg class="moon" viewBox="0 0 90 90" aria-hidden="true"><path d="M60 8a38 38 0 1 0 22 58A32 32 0 0 1 60 8z" fill="#FFF0C2" stroke="#05071C" stroke-width="3"/><circle cx="40" cy="50" r="3" fill="#1B1F5E"/><path d="M34 62q8 6 16 0" fill="none" stroke="#1B1F5E" stroke-width="3" stroke-linecap="round"/></svg>
+  <div class="wrap">
+    <div class="sec-head pop">
+      <span class="eyebrow" style="background: var(--sun); color: #1B1F5E">Oferta especial</span>
+      <h2>Leve o kit completo hoje por um <em>valor de pai pra filho</em></h2>
+      <p>Todo o material em PDF, pronto para imprimir em casa ou na igreja, quantas vezes você quiser.</p>
+    </div>
+    <div class="price-card pop">
+      <svg class="kit" viewBox="0 0 190 150" aria-hidden="true">
+        <rect x="40" y="16" width="120" height="120" rx="10" fill="#7A5CFA" stroke="#1B1F5E" stroke-width="4" transform="rotate(8 100 76)"/>
+        <rect x="26" y="10" width="124" height="128" rx="10" fill="#FFC83D" stroke="#1B1F5E" stroke-width="4"/>
+        <rect x="26" y="10" width="20" height="128" rx="6" fill="#FF5C6C" stroke="#1B1F5E" stroke-width="4"/>
+        <text x="98" y="58" text-anchor="middle" font-family="Grandstander, sans-serif" font-weight="900" font-size="22" fill="#1B1F5E">Pequenos</text>
+        <text x="98" y="80" text-anchor="middle" font-family="Grandstander, sans-serif" font-weight="900" font-size="16" fill="#1B1F5E">com Jesus</text>
+        <path d="M98 92l5 10 11 1-8 7 2 11-10-5-10 5 2-11-8-7 11-1z" fill="#fff" stroke="#1B1F5E" stroke-width="3" stroke-linejoin="round"/>
+      </svg>
+      <span class="ribbon">+400 páginas</span>
+      <p class="lbl">Kit digital completo</p>
+      <p class="price"><sup>R$</sup>27,90</p>
+      <p class="once">pagamento único</p>
+      <ul class="includes">
+        <li>Mais de 400 atividades bíblicas para colorir e brincar</li>
+        <li>Versículos ilustrados para decorar</li>
+        <li>Caça-palavras, labirintos e ligue os pontos</li>
+        <li>Acesso imediato no seu e-mail</li>
+      </ul>
+      <!-- Troque o href abaixo pelo link do seu checkout -->
+      <a class="btn coral js-party" href="#oferta" id="buy">
+        Quero garantir meu kit
+      </a>
+      <p class="secure"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="4" y="9" width="12" height="9" rx="2" fill="#22B36A" stroke="#1B1F5E" stroke-width="1.6"/><path d="M7 9V6a3 3 0 0 1 6 0v3" fill="none" stroke="#1B1F5E" stroke-width="1.6"/></svg> Compra 100% segura</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="band dots">
+  <div class="wrap">
+    <div class="sec-head pop">
+      <span class="eyebrow" style="background: var(--orange)">Dúvidas</span>
+      <h2>Perguntas frequentes</h2>
+    </div>
+    <div class="faq-list">
+      <details class="pop" open>
+        <summary>Como recebo o material?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="ans">Logo depois da confirmação do pagamento, você recebe no seu e-mail o link para baixar todos os arquivos em PDF.</p>
+      </details>
+      <details class="pop">
+        <summary>O kit é físico ou digital?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="ans">É 100% digital. Você imprime em casa, na gráfica ou na igreja, quantas vezes precisar.</p>
+      </details>
+      <details class="pop">
+        <summary>Para qual idade é indicado?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="ans">As atividades foram pensadas para crianças em fase de pintura e alfabetização, de pequenininhos que estão começando a colorir até os que já leem sozinhos.</p>
+      </details>
+      <details class="pop">
+        <summary>Posso usar na escola dominical?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="ans">Pode, sim! O material é ótimo para ministério infantil, EBD, células kids e também para o culto doméstico.</p>
+      </details>
+      <details class="pop">
+        <summary>O pagamento é seguro?<span class="pm" aria-hidden="true">+</span></summary>
+        <p class="ans">Sim. A compra é feita em uma plataforma de pagamento segura, com cartão, Pix ou boleto.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#topo"><span>Pequenos com <b>Jesus</b></span></a>
+    <p>“Deixem vir a mim as crianças.” Mateus 19:14</p>
+    <small>© 2026 Pequenos com Jesus. Todos os direitos reservados.</small>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const COLORS = ['#FF5C6C', '#FFC83D', '#22B36A', '#2EB8F0', '#7A5CFA', '#FF8A2B', '#FF8FC7'];
+
+  /* Letras saltitantes coloridas */
+  const rb = document.getElementById('rainbow');
+  const word = rb.textContent;
+  rb.textContent = '';
+  [...word].forEach((ch, i) => {
+    const s = document.createElement('span');
+    s.textContent = ch === ' ' ? ' ' : ch;
+    s.style.color = COLORS[i % COLORS.length];
+    s.style.animationDelay = (i * 0.09) + 's';
+    s.setAttribute('aria-hidden', 'true');
+    rb.appendChild(s);
+  });
+
+  /* Confete */
+  const cv = document.getElementById('confetti');
+  const ctx = cv.getContext('2d');
+  let bits = [], raf = null;
+  const resize = () => { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; };
+  resize(); addEventListener('resize', resize);
+  function burst(x, y, n = 90) {
+    if (reduce) return;
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 9;
+      bits.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 6, r: 4 + Math.random() * 6,
+        c: COLORS[i % COLORS.length], rot: Math.random() * 6, vr: (Math.random() - .5) * .4,
+        shape: Math.random() < .3 ? 'star' : Math.random() < .5 ? 'circle' : 'rect', life: 1 });
+    }
+    if (!raf) raf = requestAnimationFrame(tick);
+  }
+  function star(r) {
+    ctx.beginPath();
+    for (let i = 0; i < 10; i++) { const rr = i % 2 ? r * .45 : r; const a = i * Math.PI / 5 - Math.PI / 2; ctx.lineTo(Math.cos(a) * rr, Math.sin(a) * rr); }
+    ctx.closePath(); ctx.fill();
+  }
+  function tick() {
+    const d = devicePixelRatio;
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    bits = bits.filter(b => b.life > 0 && b.y < innerHeight + 40);
+    for (const b of bits) {
+      b.vy += .32; b.vx *= .985; b.x += b.vx; b.y += b.vy; b.rot += b.vr; b.life -= .007;
+      ctx.save(); ctx.globalAlpha = Math.max(b.life, 0); ctx.translate(b.x * d, b.y * d); ctx.rotate(b.rot); ctx.scale(d, d);
+      ctx.fillStyle = b.c;
+      if (b.shape === 'circle') { ctx.beginPath(); ctx.arc(0, 0, b.r * .7, 0, 7); ctx.fill(); }
+      else if (b.shape === 'star') star(b.r);
+      else ctx.fillRect(-b.r / 2, -b.r / 4, b.r, b.r / 2);
+      ctx.restore();
+    }
+    raf = bits.length ? requestAnimationFrame(tick) : null;
+    if (!raf) ctx.clearRect(0, 0, cv.width, cv.height);
+  }
+  document.querySelectorAll('.js-party').forEach(el => el.addEventListener('click', e => {
+    const r = el.getBoundingClientRect();
+    burst(r.left + r.width / 2, r.top + r.height / 2, el.id === 'buy' ? 160 : 90);
+  }));
+
+  /* Folha de colorir */
+  let current = COLORS[0];
+  const crayons = document.querySelectorAll('.crayon');
+  crayons.forEach(c => c.addEventListener('click', () => {
+    current = c.dataset.color;
+    crayons.forEach(o => o.setAttribute('aria-pressed', o === c ? 'true' : 'false'));
+  }));
+  const scene = document.getElementById('scene');
+  const regions = [...scene.querySelectorAll('.paint')];
+  const sheetFill = '#FFFFFF';
+  regions.forEach(p => {
+    p.style.fill = sheetFill;
+    p.setAttribute('tabindex', '0');
+    p.setAttribute('role', 'button');
+  });
+  function paint(p, color, evt) {
+    p.style.fill = color;
+    p.classList.remove('splash'); void p.getBBox(); p.classList.add('splash');
+    if (evt && evt.clientX) burst(evt.clientX, evt.clientY, 14);
+  }
+  scene.addEventListener('click', e => { const p = e.target.closest('.paint'); if (p) paint(p, current, e); });
+  scene.addEventListener('keydown', e => {
+    const p = e.target.closest('.paint');
+    if (p && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); paint(p, current); }
+  });
+  document.getElementById('magic').addEventListener('click', e => {
+    regions.forEach((p, i) => setTimeout(() => paint(p, p.dataset.hint), reduce ? 0 : i * 90));
+    const r = scene.getBoundingClientRect();
+    setTimeout(() => burst(r.left + r.width / 2, r.top + r.height / 3, 120), reduce ? 0 : regions.length * 90);
+  });
+  document.getElementById('clear').addEventListener('click', () => {
+    regions.slice().reverse().forEach((p, i) => setTimeout(() => { p.style.fill = sheetFill; }, reduce ? 0 : i * 40));
+  });
+
+  /* Galeria: pinta ao passar o mouse ou tocar, e se pinta sozinha ao aparecer */
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(pg => {
+    pg.addEventListener('mouseenter', () => pg.classList.add('colored'));
+    pg.addEventListener('click', () => pg.classList.toggle('colored'));
+    pg.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pg.classList.toggle('colored'); } });
+  });
+
+  /* Entrada animada e contador */
+  const counter = document.getElementById('counter');
+  let counted = false;
+  function runCounter() {
+    if (counted || reduce) return; counted = true;
+    const t0 = performance.now(), dur = 1600;
+    const step = t => { const k = Math.min((t - t0) / dur, 1); counter.textContent = Math.round(400 * (1 - Math.pow(1 - k, 3))) + (k === 1 ? '+' : ''); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        if (el.classList.contains('pop') && !reduce) {
+          const sibs = [...el.parentElement.children].filter(x => x.classList.contains('pop'));
+          el.style.animationDelay = Math.max(sibs.indexOf(el), 0) * 0.08 + 's';
+          el.classList.add('in');
+        }
+        if (el.classList.contains('meadow')) runCounter();
+        if (el.classList.contains('gallery')) {
+          pages.forEach((pg, i) => setTimeout(() => pg.classList.add('colored'), 500 + i * 350));
+        }
+        io.unobserve(el);
+      });
+    }, { threshold: .2 });
+    document.querySelectorAll('.pop, .gallery').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight && !el.classList.contains('gallery') && !el.classList.contains('meadow')) return; // já visível: fica parado
+      io.observe(el);
+    });
+  } else { counter.textContent = '400+'; }
+
+  /* Ovelhinha */
+  const sheep = document.getElementById('sheep');
+  const bubble = document.getElementById('bubble');
+  const lines = ['Méé! O Senhor é meu pastor!', 'Jesus cuida de mim!', 'Vamos pintar mais?', 'Deus te ama muito!'];
+  let li = 0, hideT;
+  sheep.addEventListener('click', e => {
+    sheep.classList.remove('jump'); void sheep.offsetWidth; sheep.classList.add('jump');
+    bubble.textContent = lines[li++ % lines.length];
+    bubble.classList.add('show');
+    clearTimeout(hideT); hideT = setTimeout(() => bubble.classList.remove('show'), 2600);
+    const r = sheep.getBoundingClientRect(); burst(r.left + r.width / 2, r.top + r.height / 3, 24);
+  });
+
+  /* Estrelas da noite */
+  const sky = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('i');
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 100 + '%';
+    const z = 2 + Math.random() * 4; s.style.width = s.style.height = z + 'px';
+    s.style.animationDelay = (-Math.random() * 2.5) + 's';
+    s.style.background = Math.random() < .25 ? '#FFC83D' : '#FFFFFF';
+    sky.appendChild(s);
+  }
+})();
+</script>
+</body>
+</html>
