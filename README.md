@@ -17,5 +17,4 @@ Abra o `index.html` no navegador. Para publicar de graça, ative o **GitHub Page
 ## Antes de colocar no ar
 
 - [ ] Trocar o `href` do botão **"Quero os 20 livros"** (procure `id="buy"` no `index.html`) pelo link do checkout
-- [ ] Substituir os depoimentos de exemplo pelos prints reais dos clientes
 - [ ] Conferir os nomes que dei aos livros sem título (lista `BOOKS` no fim do `index.html`): "Momentos com Jesus" (livro 4), "Palavras de Fé" (livro 1), "Criação do Mundo Kids" (01) e "Jesus e Amigos na Páscoa" (06)
